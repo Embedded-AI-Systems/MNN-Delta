@@ -151,7 +151,7 @@ void tune(Llm* llm) {
     auto opencl_exe = init_tune(backend_type_convert("opencl"), 68);
     if (opencl_exe != nullptr) {
         for (auto prefill_len : prefill_len_list) {
-            // MNN::Express::ExecutorScope scope(opencl_exe);
+            MNN::Express::ExecutorScope scope(opencl_exe);
             // qkv_sim_opencl = profileMatMul(prefill_len, hidden_size, hidden_size);
             // up_proj_sim_opencl = profileMatMul(prefill_len, hidden_size, intermediate_size);
             // down_proj_sim_opencl = profileMatMul(prefill_len, intermediate_size, hidden_size);
